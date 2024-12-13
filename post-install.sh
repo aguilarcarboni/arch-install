@@ -21,7 +21,7 @@ if [ ! -f "$HOME/.git-credentials" ]; then
 fi
 
 # Create Repositories folder structure
-cd /
+cd ~/
 mkdir Repositories
 cd Repositories
 

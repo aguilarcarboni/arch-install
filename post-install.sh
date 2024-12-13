@@ -3,11 +3,6 @@
 set -e
 set -o pipefail
 
-# Make sure docker group exists
-if ! getent group docker; then
-    groupadd docker
-fi
-
 # Add user to docker group so it can run docker without sudo
 gpasswd -a aguilarcarboni docker
 

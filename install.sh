@@ -156,7 +156,7 @@ echo "Bluetooth configured."
 
 # Install useful packages
 echo -e "\nInstalling useful packages..."
-pacman -S --needed --noconfirm fastfetch kitty python docker nodejs npm neovim openssh
+pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv docker nodejs npm neovim openssh
 npm install -g yarn
 echo -e "Packages installed.\n"
 

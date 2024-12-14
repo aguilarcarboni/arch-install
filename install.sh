@@ -172,6 +172,11 @@ echo -e "Enabled relevant daemons.\n"
 #pacman -S --noconfirm --needed plasma-meta
 #systemctl enable sddm.service
 
+# Add user to docker group so it can run docker without sudo
+echo -e "\nAdding user to docker group\n"
+gpasswd -a ${username} docker
+echo -e "Done\n"
+
 # Run Fastfetch
 fastfetch
 

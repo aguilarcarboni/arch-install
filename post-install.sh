@@ -9,12 +9,6 @@ gpasswd -a aguilarcarboni docker
 # Make sure git credentials are stored
 git config --global credential.helper store
 
-# Check for .git-credentials file
-if [ ! -f "$HOME/.git-credentials" ]; then
-    echo "Error: .git-credentials file not found in home directory"
-    exit 1
-fi
-
 # Create Repositories folder structure
 cd ~/
 mkdir Repositories

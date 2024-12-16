@@ -163,7 +163,7 @@ echo -e "Packages installed.\n"
 # Start daemons
 echo -e "\nEnabling relevant daemons..."
 systemctl enable docker.socket
-sudo systemctl start sshd
+#sudo systemctl start sshd
 sudo systemctl enable sshd
 echo -e "Enabled relevant daemons.\n"
 

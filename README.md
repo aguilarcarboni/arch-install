@@ -6,15 +6,26 @@
 Laserfocus OS is a specialized Arch Linux-based operating system designed for [brief description of target users/use case].
 
 ### Installation
-1. Boot into installer using Arch Linux ISO
-2. Change root password for SSH access
-3. Prepare machine for base Arch Linux install using prepare.sh
-4. Install Customized Arch Linux using install.sh
-    - Clone repository from Github into machine's /root directory
-    - Run install.sh from machine's root directory
-5. Reboot machine and log in as user
-6. Send dotfiles to machine's home directory
-7. Post install using post-install.sh
+
+Cloud installation
+1. Boot into installer using Arch Linux Installer ISO
+2. Copy prepare script from GitHub into machine's root directory
+
+```bash
+curl -L -o prepare.sh https://raw.githubusercontent.com/aguilarcarboni/laserfocus-os/main/prepare.sh
+```
+3. Install base Arch Linux using prepare.sh
+4. Once in Arch's root, clone repository from Github into /opt directory
+
+```bash
+git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
+```
+
+5. Install necessary packages using install.sh
+
+6. Reboot machine and log in as user
+7. Copy and decrypt dotfiles to user's home directory
+8. Post install using server-install.sh
 
 ### Features
 - Preinstalled with developer tools (Docker, Node, Python, etc.)

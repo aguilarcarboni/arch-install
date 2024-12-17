@@ -2,7 +2,11 @@
 
 # Copy dotfiles to home directory
 echo -e "\nCopying dotfiles..."
-gpg --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
+gpg -d /opt/laserfocus-os/dotfiles.tar.gpg > /opt/laserfocus-os/dotfiles.tar
+tar -xzvf /opt/laserfocus-os/dotfiles.tar
+rm /opt/laserfocus-os/dotfiles.tar
+
+cp -r /opt/laserfocus-os/dotfiles/.git-credentials ~/
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
 cp -r /opt/laserfocus-os/dotfiles/.gitconfig ~/
 echo -e "Done\n"

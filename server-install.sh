@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Fetch dotfiles
+
 # Make sure git credentials are stored
 echo -e "\nSetting up git credentials..."
 if [ ! -f ~/.git-credentials ]; then

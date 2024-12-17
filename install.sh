@@ -177,6 +177,11 @@ echo -e "\nAdding user to docker group\n"
 gpasswd -a ${username} docker
 echo -e "Done\n"
 
+# Set ownership of the laserfocus-os folder
+echo -e "\nSetting ownership of the laserfocus-os folder\n"
+chown -R ${username} /opt/laserfocus-os
+echo -e "Done\n"
+
 # Run Fastfetch
 fastfetch
 

@@ -21,6 +21,9 @@ echo -e "\nMounting Vault 111 and fetching most recent Carbonite backups..."
 mkdir Carbonite
 echo -e "Done\n"
 
+mkdir Source
+cd Source
+
 # Clone Nebula's infrastructure
 echo -e "\nCloning Nebula's infrastructure..."
 git clone https://github.com/aguilarcarboni/nebula.git

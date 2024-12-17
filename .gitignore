@@ -1,1 +1,2 @@
-dotfiles/
+# Ignore the git-credentials file
+dotfiles/.git-credentials

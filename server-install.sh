@@ -17,7 +17,7 @@ mkdir Nebula
 cd Nebula
 
 # Mount Vault 111 and fetch Carbonite backups
-echo -e "\nMounting Vault 111 and fetching most recent Carbonite backups..."
+echo -e "\nMounting Vault 111 and attaching most recent Carbonite backups..."
 mkdir Carbonite
 echo -e "Done\n"
 

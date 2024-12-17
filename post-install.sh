@@ -1,18 +1,20 @@
 #!/bin/bash
 
-# Decrypt and extract dotfiles
-echo -e "\nCopying dotfiles..."
-gpg -d /opt/laserfocus-os/dotfiles.tar.gpg > /opt/laserfocus-os/dotfiles.tar
-tar -xvf /opt/laserfocus-os/dotfiles.tar
-rm /opt/laserfocus-os/dotfiles.tar
-
 # Copy dotfiles to home directory
-cp -r /opt/laserfocus-os/dotfiles/.git-credentials ~/
+echo -e "\nCopying dotfiles..."
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
 cp -r /opt/laserfocus-os/dotfiles/.gitconfig ~/
+gpg --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
+echo -e "Done\n"
 
-# Remove dotfiles from repository
-rm -rf /opt/laserfocus-os/dotfiles
+# Make sure git credentials are stored
+echo -e "\nSetting up git credentials..."
+if [ ! -f ~/.git-credentials ]; then
+    echo "Warning: ~/.git-credentials file not found"
+    echo "Please make sure to login to git to create credentials"
+    exit 1
+fi
+git config --global credential.helper store
 echo -e "Done\n"
 
 # Create Nebula folder structure

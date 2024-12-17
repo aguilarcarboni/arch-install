@@ -1,3 +1,2 @@
 # Ignore the git-credentials file
-dotfiles/*
-dotfiles.tar
+dotfiles/.git-credentials

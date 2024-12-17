@@ -10,7 +10,7 @@ Laserfocus OS is a specialized Arch Linux-based operating system designed for [b
 2. Change root password for SSH access
 3. Prepare machine for base Arch Linux install using prepare.sh
 4. Install Customized Arch Linux using install.sh
-    - Clone repository from Github into machine's home directory
+    - Clone repository from Github into machine's /root directory
     - Run install.sh from machine's root directory
 5. Reboot machine and log in as user
 6. Send dotfiles to machine's home directory

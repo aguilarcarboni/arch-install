@@ -4,6 +4,7 @@
 echo -e "\nCopying dotfiles..."
 gpg --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
+cp -r /opt/laserfocus-os/dotfiles/.gitconfig ~/
 echo -e "Done\n"
 
 # Make sure git credentials are stored
@@ -14,6 +15,7 @@ if [ ! -f ~/.git-credentials ]; then
     exit 1
 fi
 git config --global credential.helper store
+echo -e "Done\n"
 
 # Create Nebula folder structure
 read -p "Do you want to set up Nebula in this machine? (Y/n): " nebula

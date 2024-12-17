@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Make sure user is not root
-if [ "$EUID" -eq 0 ]; then
-    echo "User is not root, continuing..."
-else
-    echo "User is root, exiting..."
-    exit 1
-fi
-
 # Copy dotfiles to home directory
 echo -e "\nCopying dotfiles..."
 gpg --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials

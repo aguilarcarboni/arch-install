@@ -2,6 +2,8 @@
 
 # Script to set up main user configuration after the installation of a base Arch Linux
 # WARNING: This script is not meant to be run as root. It is meant to be run as the main user.
+set -e
+set -o pipefail
 
 # Copy dotfiles to home directory
 echo -e "\nCopying dotfiles..."

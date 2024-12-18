@@ -21,7 +21,5 @@ git config --global credential.helper store
 echo -e "Done\n"
 
 fastfetch
-
-fastfetch
 echo -e "Welcome to the laserfocus-os."
 echo -e "The path to success starts with laserfocus."

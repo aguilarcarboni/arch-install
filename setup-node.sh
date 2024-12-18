@@ -111,6 +111,3 @@ fi
 fastfetch
 echo -e "Welcome to the laserfocus-os-server."
 echo -e "The path to success starts with laserfocus."
-
-wait 5
-cmatrix

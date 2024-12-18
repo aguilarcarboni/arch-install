@@ -10,22 +10,20 @@ set -o pipefail
 
 # Copy dotfiles to home directory
 echo -e "\nCopying dotfiles..."
+
+# Copy .gnupg
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
+chown -R $(whoami) ~/.gnupg/
+chmod 600 ~/.gnupg/*
+chmod 700 ~/.gnupg
+
+# Copy .gitconfig
 cp -r /opt/laserfocus-os/dotfiles/.gitconfig ~/
+
+# Decrypt .git-credentials
 echo -e "Decrypting heavier files..."
 read -sp "Enter your passphrase to decrypt your files: " passphrase
-echo -e "\n"
 gpg --batch --passphrase ${passphrase} --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
-echo -e "Done\n"
-
-# Make sure git credentials are stored
-echo -e "\nSetting up git credentials..."
-if [ ! -f ~/.git-credentials ]; then
-    echo "Warning: ~/.git-credentials file not found"
-    echo "Please make sure to login to git to create credentials"
-    exit 1
-fi
-git config --global credential.helper store
 echo -e "Done\n"
 
 # Create Nebula folder structure

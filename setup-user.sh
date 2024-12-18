@@ -7,8 +7,16 @@ set -o pipefail
 
 # Copy dotfiles to home directory
 echo -e "\nCopying dotfiles..."
+
+# Copy .gnupg
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
+chmod 600 ~/.gnupg/*
+chmod 700 ~/.gnupg
+
+# Copy .gitconfig
 cp -r /opt/laserfocus-os/dotfiles/.gitconfig ~/
+
+# Decrypt .git-credentials
 echo -e "Decrypting heavier files..."
 read -sp "Enter your passphrase to decrypt your files: " passphrase
 echo -e "\n"

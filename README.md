@@ -22,10 +22,8 @@ git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
 ```
 
 5. Install necessary packages using install.sh
-
 6. Reboot machine and log in as user
-7. Copy and decrypt dotfiles to user's home directory
-8. Post install using server-install.sh
+7. Set up basic user configurations and any type of Nebula node using setup-node.sh
 
 ### Features
 - Preinstalled with developer tools (Docker, Node, Python, etc.)

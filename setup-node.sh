@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Script to set up main user configuration and install all the necessary packages 
+# and configurations for running any type of Nebula node after the installation 
+# of a base Arch Linux
+# WARNING: This script is not meant to be run as root. It is meant to be run as the main user.
+
 # Copy dotfiles to home directory
 echo -e "\nCopying dotfiles..."
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
@@ -18,7 +23,7 @@ git config --global credential.helper store
 echo -e "Done\n"
 
 # Create Nebula folder structure
-read -p "Do you want to set up Nebula in this machine? (Y/n): " nebula
+read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula
 if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
     echo -e "\nCreating Nebula..."
     cd ~/
@@ -99,10 +104,13 @@ if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
         echo -e "Done\n"
     fi
 
-
-    echo -e "Done building Nebula.\n"
+    echo -e "Done building Nebula node.\n"
 
 fi
 
 fastfetch
-echo -e "Welcome to laserfocus-os"
+echo -e "Welcome to the laserfocus-os-server."
+echo -e "The path to success starts with laserfocus."
+
+wait 5
+cmatrix

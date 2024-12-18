@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script to install a base Arch Linux and prepare a system for the laserfocus-os project
+# WARNING: This script is meant to be run as root.
+
 # Create partitions
 # Boot needs to be 500 MBs and root takes extra
 echo -e "\nCreating partitions..."

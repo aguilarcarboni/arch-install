@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script to install all necessary packages and configurations for the laserfocus-os project
+# WARNING: This script is meant to be run as root.
+
 # Exit on error and ensure errors in pipelines are caught
 set -e
 set -o pipefail
@@ -156,14 +159,13 @@ echo "Bluetooth configured."
 
 # Install useful packages
 echo -e "\nInstalling useful packages..."
-pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv docker docker-compose nodejs npm neovim openssh gnupg
+pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv docker docker-compose nodejs npm neovim openssh gnupg cmatrix
 npm install -g yarn
 echo -e "Packages installed.\n"
 
 # Start daemons
 echo -e "\nEnabling relevant daemons..."
 systemctl enable docker.socket
-#sudo systemctl start sshd
 sudo systemctl enable sshd
 echo -e "Enabled relevant daemons.\n"
 

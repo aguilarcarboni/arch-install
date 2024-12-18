@@ -12,7 +12,10 @@ set -o pipefail
 echo -e "\nCopying dotfiles..."
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
 cp -r /opt/laserfocus-os/dotfiles/.gitconfig ~/
-gpg --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
+echo -e "Decrypting heavier files..."
+read -sp "Enter your passphrase to decrypt your files: " passphrase
+echo -e "\n"
+gpg --batch --passphrase ${passphrase} --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
 echo -e "Done\n"
 
 # Make sure git credentials are stored

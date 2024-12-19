@@ -24,6 +24,13 @@ echo -e "\n"
 gpg --batch --passphrase ${passphrase} --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
 echo -e "Done\n"
 
+# Setup AUR helper
+cd $HOME
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
 fastfetch
 echo -e "Welcome to the laserfocus-os."
 echo -e "The path to success starts with laserfocus."

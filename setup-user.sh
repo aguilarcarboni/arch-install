@@ -10,6 +10,8 @@ echo -e "\nCopying dotfiles..."
 
 # Copy .gnupg
 cp -r /opt/laserfocus-os/dotfiles/.gnupg ~/
+
+# Set up correct gnupg ownership
 chown -R $(whoami) ~/.gnupg/
 chmod 600 ~/.gnupg/*
 chmod 700 ~/.gnupg

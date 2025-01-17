@@ -27,13 +27,6 @@ echo -e "\n"
 gpg --batch --passphrase ${passphrase} --decrypt /opt/laserfocus-os/dotfiles/.git-credentials.gpg > ~/.git-credentials
 echo -e "Done\n"
 
-# Setup AUR helper
-cd $HOME
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
 # Create Nebula folder structure
 read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula
 if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
@@ -41,14 +34,6 @@ if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
     cd ~/
     mkdir Nebula
     cd Nebula
-
-    # Mount Vault 111 and fetch Carbonite backups
-    echo -e "\nMounting Vault 111 and attaching most recent Carbonite backups..."
-    mkdir Carbonite
-    echo -e "Done\n"
-
-    mkdir Source
-    cd Source
 
     # Clone Nebula's infrastructure
     echo -e "\nCloning Nebula's infrastructure..."

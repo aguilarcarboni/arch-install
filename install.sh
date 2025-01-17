@@ -21,7 +21,7 @@ echo -e "\n"
 read -p "Enter the username you want to create: " username
 read -sp "Enter the password for ${username}: " user_password
 echo -e "\n"
-read -p "Enter the host name: " hostname
+read -p "Enter the hostname: " hostname
 echo -e "\n"
 
 # Set the time zone

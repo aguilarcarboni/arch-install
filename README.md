@@ -33,7 +33,7 @@ git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
 
 5. Install necessary package using [install.sh](/install.sh)
 6. Reboot machine and log in as user
-7. Set up basic user configurations and any type of Nebula node using [setup-node.sh](/setup-node.sh) or set up for basic use with [setup-basic.sh](/setup-user.sh)
+7. Set up basic user configurations and any type of Nebula node using [setup-node.sh](/setup-node.sh)
 
 ### Contact
 For questions and support, please reach out to [@aguilarcarboni](https://github.com/aguilarcarboni/)

@@ -1,39 +1,11 @@
 #!/bin/bash
 
-# Script to set up main user configuration and install all the necessary packages 
-# and configurations for running any type of Nebula node after the installation 
-# of a base Arch Linux
+# Script to set up install all the necessary packages and configurations for 
+# running any type of Nebula node after the installation of a base Arch Linux
 # WARNING: This script is not meant to be run as root. It is meant to be run as the main user.
 
 set -e
 set -o pipefail
-
-# Copy dotfiles to home directory
-echo -e "\nCopying dotfiles..."
-
-# Clone dotfiles from Github
-git clone https://github.com/aguilarcarboni/dotfiles.git ~/dotfiles
-
-# Copy .gnupg to home directory
-cp -r ~/dotfiles/.gnupg ~/
-
-# Set permissions for .gnupg
-chown -R $(whoami) ~/.gnupg/
-chmod 600 ~/.gnupg/*
-chmod 700 ~/.gnupg
-
-# Copy .gitconfig to home directory
-cp -r ~/dotfiles/.gitconfig ~/
-
-# Decrypt .git-credentials
-echo -e "Decrypting heavier files..."
-read -sp "Enter your passphrase to decrypt your files: " passphrase
-echo -e "\n"
-gpg --batch --passphrase ${passphrase} --decrypt ~/dotfiles/.git-credentials.gpg > ~/.git-credentials
-echo -e "Done\n"
-
-# Remove dotfiles folder
-rm -rf ~/dotfiles
 
 # Create Nebula folder structure
 read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula

@@ -9,6 +9,9 @@
 set -e
 set -o pipefail
 
+# Get all dotfiles before creating node
+sh get-dotfiles.sh
+
 # Create Nebula folder structure
 read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula
 if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then

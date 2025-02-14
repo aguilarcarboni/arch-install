@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Script to set up install all the necessary packages and configurations for 
-# running any type of Nebula node after the installation of a base Arch Linux
+###############################################################################
+# Setup Nebula Node                                                           #
+###############################################################################
+
 # WARNING: This script is not meant to be run as root. It is meant to be run as the main user.
 
 set -e
 set -o pipefail
-
-sh get-dotfiles.sh
 
 # Create Nebula folder structure
 read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula

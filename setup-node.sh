@@ -7,6 +7,8 @@
 set -e
 set -o pipefail
 
+sh get-dotfiles.sh
+
 # Create Nebula folder structure
 read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula
 if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
@@ -24,23 +26,18 @@ if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
     docker volume create portainer_data
     docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.4
 
-    # Create Nebula's core
-    read -p "Do you want to set up Atlas in this machine? (Y/n): " atlas
-    if [[ -z "${atlas}" || "${atlas}" =~ ^[Yy]$ ]]; then
-        echo -e "\nBuilding Atlas using Nebula's infrastructure..."
-        mkdir atlas
-        cd nebula
-        docker compose -f atlas.yaml build
-        docker compose -f atlas.yaml up -d
-        cd ..
-        echo -e "Done\n"
-    fi
+    echo -e "\nBuilding Cortex using Nebula's infrastructure..."
+    mkdir cortex
+    cd infrastructure
+    docker compose -f cortex.yaml up -d
+    cd ..
+    echo -e "Done\n"
 
     read -p "Do you want to set up Apollo in this machine? (Y/n): " apollo
     if [[ -z "${apollo}" || "${apollo}" =~ ^[Yy]$ ]]; then
         echo -e "\nBuilding Apollo using Nebula's infrastructure..."
         mkdir apollo
-        cd nebula
+        cd infrastructure
         docker compose -f apollo.yaml build
         docker compose -f apollo.yaml up -d
         cd ..
@@ -59,7 +56,7 @@ if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
         cd ..
 
         echo -e "\nBuilding laserfocus using Nebula's infrastructure..."
-        cd nebula
+        cd infrastructure
         docker compose -f laserfocus.yaml build
         docker compose -f laserfocus.yaml up -d
         cd ..
@@ -78,7 +75,7 @@ if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
         cd ..
 
         echo -e "\nBuilding Athena using Nebula's infrastructure..."
-        cd nebula
+        cd infrastructure
         docker compose -f athena.yaml build
         docker compose -f athena.yaml up -d
         cd ..
@@ -90,5 +87,4 @@ if [[ -z "${nebula}" || "${nebula}" =~ ^[Yy]$ ]]; then
 fi
 
 fastfetch
-echo -e "Welcome to the laserfocus-os-server."
-echo -e "The path to success starts with laserfocus."
+echo -e "Nebula node successfully set up."

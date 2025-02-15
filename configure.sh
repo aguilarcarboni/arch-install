@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Script to install all necessary packages and configurations for the laserfocus-os project
+# Script to configure the system
 # WARNING: This script is meant to be run as root.
 
-# Exit on error and ensure errors in pipelines are caught
 set -e
 set -o pipefail
+
+###############################################################################
+# Configure System                                                       
+###############################################################################
 
 # Check if the script is being run as root
 echo -e "\nChecking if you are root..."
@@ -157,7 +160,15 @@ pacman -S --noconfirm --needed bluez bluez-utils
 systemctl enable bluetooth.service
 echo "Bluetooth configured."
 
+# Set ownership of the laserfocus-os folder
+echo -e "\nSetting ownership of the laserfocus-os folder\n"
+chown -R ${username} /opt/laserfocus-os
+echo -e "Done\n"
+
+###############################################################################
 # Install useful packages
+###############################################################################
+
 echo -e "\nInstalling useful packages..."
 pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv docker docker-compose nodejs npm neovim openssh gnupg cmatrix
 npm install -g yarn
@@ -177,11 +188,6 @@ echo -e "Enabled relevant daemons.\n"
 # Add user to docker group so it can run docker without sudo
 echo -e "\nAdding user to docker group\n"
 gpasswd -a ${username} docker
-echo -e "Done\n"
-
-# Set ownership of the laserfocus-os folder
-echo -e "\nSetting ownership of the laserfocus-os folder\n"
-chown -R ${username} /opt/laserfocus-os
 echo -e "Done\n"
 
 # Run Fastfetch

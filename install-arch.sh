@@ -1,7 +1,14 @@
 #!/bin/bash
 
-# Script to install a base Arch Linux and prepare a system for the laserfocus-os project
+# Script to install Arch Linux
 # WARNING: This script is meant to be run as root.
+
+set -e
+set -o pipefail
+
+###############################################################################
+# Install Arch Linux                                                           
+###############################################################################
 
 # Create partitions
 # Boot needs to be 500 MBs and root takes extra

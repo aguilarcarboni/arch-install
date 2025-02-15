@@ -1,13 +1,50 @@
 #!/bin/bash
 
-###############################################################################
-# Setup Nebula Node                                                           #
-###############################################################################
-
+# Script to set up a Nebula node
 # WARNING: This script is not meant to be run as root. It is meant to be run as the main user.
 
 set -e
 set -o pipefail
+
+###############################################################################
+# Get Dotfiles                                                                
+###############################################################################
+
+echo -e "Getting dotfiles..."
+
+# Clone dotfiles from Github
+echo -e "Cloning dotfiles from Github..."
+git clone https://github.com/aguilarcarboni/dotfiles.git ~/dotfiles
+
+# Copy .gnupg to home directory
+echo -e "Copying basic dotfiles to home directory..."
+cp -r ~/dotfiles/.gnupg ~/
+
+# Set permissions for .gnupg
+chown -R $(whoami) ~/.gnupg/
+chmod 600 ~/.gnupg/*
+chmod 700 ~/.gnupg
+
+# Copy .gitconfig to home directory
+cp -r ~/dotfiles/.gitconfig ~/
+
+###############################################################################
+# Decrypt Dotfiles                                                            
+###############################################################################
+
+# Decrypt .git-credentials
+echo -e "Decrypting heavier files..."
+read -sp "Enter your passphrase to decrypt your files: " passphrase
+echo -e "\n"
+gpg --batch --passphrase ${passphrase} --decrypt ~/dotfiles/.git-credentials.gpg > ~/.git-credentials
+
+# Remove dotfiles folder
+rm -rf ~/dotfiles
+echo -e "Done\n"
+
+###############################################################################
+# Set up Nebula Node                                                           
+###############################################################################
 
 # Create Nebula folder structure
 read -p "Do you want to set up a Nebula node in this machine? (Y/n): " nebula

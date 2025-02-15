@@ -19,21 +19,21 @@ Laserfocus OS can also be used as a base OS as a type of clean and minimal Linux
 0. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/) and create bootable media
 
 1. Boot into installer using latest Arch Linux Installer ISO
-2. Copy prepare script from Github into machine's root directory
+2. Install Arch Linux using [install-arch.sh](/install-arch.sh)
 
 ```bash
-curl -L -o prepare.sh https://raw.githubusercontent.com/aguilarcarboni/laserfocus-os/main/prepare.sh
+curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/laserfocus-os/main/install-arch.sh
 ```
-3. Install base Arch Linux and prepare machine using [prepare.sh](/prepare.sh)
-4. Once in Arch's root, clone repository from Github into /opt directory
+
+3. Once in Arch's root, clone repository from Github into /opt directory
 
 ```bash
 git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
 ```
 
-5. Install necessary package using [install.sh](/install.sh)
-6. Reboot machine and log in as user
-7. Set up basic user configurations and any type of Nebula node using [setup-node.sh](/setup-node.sh)
+4. Install necessary packages using [configure.sh](/configure.sh)
+5. Reboot machine and log in as user
+6. Set up basic user configurations and any type of Nebula node using [setup-node.sh](/setup-node.sh)
 
 ### Contact
 For questions and support, please reach out to [@aguilarcarboni](https://github.com/aguilarcarboni/)

@@ -24,8 +24,6 @@ echo -e "\n"
 read -p "Enter the username you want to create: " username
 read -sp "Enter the password for ${username}: " user_password
 echo -e "\n"
-read -p "Enter the hostname: " hostname
-echo -e "\n"
 
 # Set the time zone
 echo -e "\nTo set the time zone, you will use /sbin/tzselect."
@@ -141,10 +139,10 @@ echo "GRUB configuration generated."
 
 # Network configuration
 echo -e "\nConfiguring network..."
-echo ${hostname} >/etc/hostname
+echo "laserfocus" >/etc/hostname
 echo "127.0.0.1 localhost
 ::1       localhost
-127.0.1.1 ${hostname}.localhost ${hostname}" | tee /etc/hosts >/dev/null
+127.0.1.1 laserfocus.localhost laserfocus" | tee /etc/hosts >/dev/null
 pacman -S --noconfirm --needed networkmanager
 systemctl enable NetworkManager.service
 echo "Network configured."

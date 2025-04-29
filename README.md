@@ -31,9 +31,9 @@ curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/lase
 git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
 ```
 
-4. Install necessary packages using [configure.sh](/configure.sh)
+4. Install necessary packages using [configure-root.sh](/configure-root.sh)
 5. Reboot machine and log in as user
-6. Set up basic user configurations and any type of Nebula node using [setup-node.sh](/setup-node.sh)
+6. Set up basic user configurations and any type of Nebula node using [setup-user.sh](/setup-user.sh)
 
 ### Contact
 For questions and support, please reach out to [@aguilarcarboni](https://github.com/aguilarcarboni/)

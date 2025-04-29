@@ -12,12 +12,17 @@ set -o pipefail
 # Get Dotfiles
 ###############################################################################
 
-echo "Getting your dotfiles..."
-
 echo "Cloning dotfiles from Github..."
 git clone https://github.com/aguilarcarboni/dotfiles.git ~/dotfiles
 
-echo "Copying basic dotfiles to home directory..."
+echo "Decrypting dotfiles..."
+read -sp "Enter your passphrase to decrypt your files: " passphrase
+gpg --batch --passphrase ${passphrase} --decrypt ~/dotfiles/encrypted.tar.gz.gpg > ~/dotfiles/encrypted.tar.gz
+
+# Extract the zip
+tar xzf ~/dotfiles/encrypted.tar.gz -C ~/dotfiles
+
+echo "Loading dotfiles to computer..."
 
 ###############################################################################
 # GPG
@@ -46,6 +51,9 @@ cp -r ~/dotfiles/.ssh ~/
 # Copy .gitconfig to home directory
 cp ~/dotfiles/.gitconfig ~/
 
+# Copy .git-credentials to home directory
+cp ~/dotfiles/encrypted/.git-credentials ~/
+
 ###############################################################################
 # Shell
 ###############################################################################
@@ -56,28 +64,24 @@ cp ~/dotfiles/.zprofile ~/
 # Copy .bashrc to home directory
 cp ~/dotfiles/.bashrc ~/
 
-# Copy .zshrc and .zprofile to home directory
+# Copy .zshrc to home directory
 cp ~/dotfiles/.zshrc ~/
+
+# Copy .zprofile to home directory
 cp ~/dotfiles/.zprofile ~/
 
 ###############################################################################
-# Decrypt Dotfiles
+# PyPi
 ###############################################################################
 
-cd ~/dotfiles
-echo "Decrypting heavier files..."
+# Copy .pypirc to home directory
+cp ~/dotfiles/encrypted/.pypirc ~/
 
-# Decrypt the zip
-read -sp "Enter your passphrase to decrypt your files: " passphrase
-gpg --batch --passphrase ${passphrase} --decrypt encrypted.tar.gz.gpg > encrypted.tar.gz
+###############################################################################
+# Clean Up
+###############################################################################
 
-# Extract the zip
-tar xzf encrypted.tar.gz
-
-cp encrypted/.pypirc ~/
-cp encrypted/.git-credentials ~/
-
-# Remove the dotfiles directory
+# Remove dotfiles directory
 rm -rf ~/dotfiles
 
 echo "Done"

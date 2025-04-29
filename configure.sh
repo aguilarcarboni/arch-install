@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to configure the system
+# Script to configure the system's root user and create a new user.
 # WARNING: This script is meant to be run as root.
 
 set -e

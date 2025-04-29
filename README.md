@@ -16,8 +16,8 @@ Laserfocus OS can also be used as a base OS as a type of clean and minimal Linux
 - Automatic Vault 111 mounting for backups and data persistence (coming soon!)
 
 ### Installation
-0. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/) and create bootable media
 
+0. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/) and create bootable media
 1. Boot into installer using latest Arch Linux Installer ISO
 2. Install Arch Linux using [install-arch.sh](/install-arch.sh)
 

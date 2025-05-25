@@ -19,7 +19,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 # Set the root password, username, and hostname
-read -p "Enter the hostname you want to use: " hostname
+hostname="laserfocus"
 read -sp "Enter the password for root: " root_password
 echo -e "\n"
 read -p "Enter the username you want to create: " username

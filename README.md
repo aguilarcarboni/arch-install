@@ -8,27 +8,21 @@ Arch Linux installer scripts to leverage infrastructure as code and have a decla
 ### Features
 - Minimal Linux installation
 - Declarative configuration for users
-- Preinstalled with developer tools (Docker, Node, Python, etc.)
 - Hyprland desktop environment
 
 ### Installation
 
-0. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/).
-1. Boot into installer using latest Arch Linux Installer ISO.
-2. Install Arch Linux using [install-arch.sh](/install-arch.sh).
-
+1. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/).
+2. Boot into installer via Virtual Machine or USB drive.
+3. Run the install-arch.sh script. Remember Arch needs two GPT partitions, one for boot and one for root. The boot partition needs to be at least 500 MBs.
 ```bash
 curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/arch-install/main/install-arch.sh
 ```
-
-3. Once in Arch's root, clone repository from Github into /opt directory
-
+4. Once the script is finished make sure you are in Arch's root and run [setup-root.sh](/setup-root.sh).
 ```bash
 git clone https://github.com/aguilarcarboni/arch-install.git /opt/arch-install
 ```
-
-4. Install necessary packages using [setup-root.sh](/setup-root.sh)
-5. Reboot machine and log in as user
-6. Set up basic user configurations and any type of Nebula node using [install-software.sh](/install-software.sh)
+5. Exit Arch's root, reboot machine and log in as user.
+6. Install user's software and configurations using [install-software.sh](/install-software.sh)
 
 ### created by [@aguilarcarboni](https://github.com/aguilarcarboni/)

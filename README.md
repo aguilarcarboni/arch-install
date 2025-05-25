@@ -1,9 +1,9 @@
-# Laserfocus OS
+# Install Arch
 
-## A customized Arch Linux distribution for enhanced productivity
+## A personalized, declarative Arch Linux install
 
 ### Description
-Laserfocus OS is a specialized Arch Linux-based operating system using infrastructure as code to make it easy to have a very personalized and minimal dependency installation.
+Arch Linux installer scripts to leverage infrastructure as code and have a declarative, personalized and minimal Linux installation.
 
 ### Features
 - Minimal Linux installation
@@ -13,9 +13,9 @@ Laserfocus OS is a specialized Arch Linux-based operating system using infrastru
 
 ### Installation
 
-0. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/) and create bootable media
-1. Boot into installer using latest Arch Linux Installer ISO
-2. Install Arch Linux using [install-arch.sh](/install-arch.sh)
+0. Download latest Arch Linux ISO from an [Arch Linux mirror](https://geo.mirror.pkgbuild.com/iso/latest/).
+1. Boot into installer using latest Arch Linux Installer ISO.
+2. Install Arch Linux using [install-arch.sh](/install-arch.sh).
 
 ```bash
 curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/laserfocus-os/main/install-arch.sh
@@ -31,8 +31,4 @@ git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
 5. Reboot machine and log in as user
 6. Set up basic user configurations and any type of Nebula node using [setup-user.sh](/setup-user.sh)
 
-### Contact
-For questions and support, please reach out to [@aguilarcarboni](https://github.com/aguilarcarboni/)
-
----
-Created by [@aguilarcarboni](https://github.com/aguilarcarboni/)
+### created by [@aguilarcarboni](https://github.com/aguilarcarboni/)

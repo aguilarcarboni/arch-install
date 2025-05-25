@@ -21,8 +21,11 @@ fi
 # Set the root password, username, and hostname
 read -p "Enter the hostname you want to use: " hostname
 read -sp "Enter the password for root: " root_password
+echo -e "\n"
 read -p "Enter the username you want to create: " username
+echo -e "\n"
 read -sp "Enter the password for ${username}: " user_password
+echo -e "\n"
 
 # Set the time zone
 echo "This command will guide you through selecting your region and city."

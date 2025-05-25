@@ -3,17 +3,13 @@
 ## A customized Arch Linux distribution for enhanced productivity
 
 ### Description
-Laserfocus OS is a specialized Arch Linux-based operating system using infrastructure as code to make it easy to create, deploy and manage a Nebula node inside the Nebula network from scratch.
-
-Laserfocus OS can also be used as a base OS as a type of clean and minimal Linux installation.
+Laserfocus OS is a specialized Arch Linux-based operating system using infrastructure as code to make it easy to have a very personalized and minimal dependency installation.
 
 ### Features
 - Minimal Linux installation
 - Declarative configuration for users
 - Preinstalled with developer tools (Docker, Node, Python, etc.)
 - Hyprland desktop environment
-- Nebula node management
-- Automatic Vault 111 mounting for backups and data persistence (coming soon!)
 
 ### Installation
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Script to configure the system's root user and create a new user.
-# WARNING: This script is meant to be run as root.
+# This script is used to configure the system and its root user and create a new user.
+# WARNING: THIS SCRIPT IS MEANT TO BE RUN AS ROOT.
 
 set -e
 set -o pipefail
 
 ###############################################################################
-# Configure System                                                       
+# Configure System Basics
 ###############################################################################
 
 # Check if the script is being run as root
@@ -35,22 +35,12 @@ ln -sf /usr/share/zoneinfo/${timezone} /etc/localtime
 hwclock --systohc
 echo -e "Time zone set.\n"
 
-# Ask for swap to file
-read -p "Do you want to create a swap file? (Y/n): " swap
-if [[ -z "${swap}" || "${swap}" =~ ^[Yy]$ ]]; then
-    read -p "Enter the size of the swap file in GB: " swap_size
-fi
-
-# Set swap file if wanted
-if [[ -z "${swap}" || "${swap}" =~ ^[Yy]$ ]]; then
-    echo -e "\nCreating swap file..."
-    mkswap -U clear --size ${swap_size}G --file /swapfile
-    swapon /swapfile
-    echo -e '/swapfile none swap defaults 0 0\n' >> /etc/fstab
-    echo "Swap file created."
-else
-    echo -e "Skipping swap file creation.\n"
-fi
+# Set the locale
+echo -e "\nSetting english UTF-8 locale..."
+sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" >/etc/locale.conf
+echo "Locale set."
 
 # Set accounts
 echo -e "\nSetting up accounts..."
@@ -68,6 +58,43 @@ if ! grep -q '^ILoveCandy' /etc/pacman.conf; then
 fi
 pacman -Syy
 echo "Pacman configured."
+
+# Enable sudo
+echo -e "\nEnabling sudo..."
+pacman -S --noconfirm --needed sudo
+sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
+echo "Sudo enabled."
+
+# Grub installation
+echo -e "\nInstalling GRUB..."
+pacman -S --noconfirm --needed grub efibootmgr os-prober
+grub-install --verbose --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+echo "GRUB installed."
+echo -e "\nGenerating GRUB configuration..."
+sed -i '$ s/^#//' /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg
+echo "GRUB configuration generated."
+
+###############################################################################
+# Configure System Hardware and Install Drivers
+###############################################################################
+
+# Ask for swap to file
+read -p "Do you want to create a swap file? (Y/n): " swap
+if [[ -z "${swap}" || "${swap}" =~ ^[Yy]$ ]]; then
+    read -p "Enter the size of the swap file in GB: " swap_size
+fi
+
+# Set swap file if wanted
+if [[ -z "${swap}" || "${swap}" =~ ^[Yy]$ ]]; then
+    echo -e "\nCreating swap file..."
+    mkswap -U clear --size ${swap_size}G --file /swapfile
+    swapon /swapfile
+    echo -e '/swapfile none swap defaults 0 0\n' >> /etc/fstab
+    echo "Swap file created."
+else
+    echo -e "Skipping swap file creation.\n"
+fi
 
 # Hardware detection and conditional package installation
 echo -e "\nDetecting hardware..."
@@ -114,29 +141,6 @@ else
     echo "Hardware detected and set up."
 fi
 
-# Enable sudo
-echo -e "\nEnabling sudo..."
-pacman -S --noconfirm --needed sudo
-sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
-echo "Sudo enabled."
-
-# Set the locale
-echo -e "\nSetting english UTF-8 locale..."
-sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" >/etc/locale.conf
-echo "Locale set."
-
-# Grub installation
-echo -e "\nInstalling GRUB..."
-pacman -S --noconfirm --needed grub efibootmgr os-prober
-grub-install --verbose --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-echo "GRUB installed."
-echo -e "\nGenerating GRUB configuration..."
-sed -i '$ s/^#//' /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg
-echo "GRUB configuration generated."
-
 # Network configuration
 echo -e "\nConfiguring network..."
 echo "laserfocus" >/etc/hostname
@@ -158,15 +162,16 @@ pacman -S --noconfirm --needed bluez bluez-utils
 systemctl enable bluetooth.service
 echo "Bluetooth configured."
 
-# Set ownership of the laserfocus-os folder
-echo -e "\nSetting ownership of the laserfocus-os folder\n"
-chown -R ${username} /opt/laserfocus-os
+###############################################################################
+# Install Software
+###############################################################################
+
+# Set ownership of the arch-install folder
+echo -e "\nSetting ownership of the arch-install folder\n"
+chown -R ${username} /opt/arch-install
 echo -e "Done\n"
 
-###############################################################################
 # Install useful packages
-###############################################################################
-
 echo -e "\nInstalling useful packages..."
 pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv docker docker-compose nodejs npm neovim openssh gnupg cmatrix
 npm install -g yarn
@@ -190,5 +195,3 @@ echo -e "Done\n"
 
 # Run Fastfetch
 fastfetch
-
-echo -e "\nInstallation complete."

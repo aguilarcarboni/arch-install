@@ -18,13 +18,13 @@ Arch Linux installer scripts to leverage infrastructure as code and have a decla
 2. Install Arch Linux using [install-arch.sh](/install-arch.sh).
 
 ```bash
-curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/laserfocus-os/main/install-arch.sh
+curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/arch-install/main/install-arch.sh
 ```
 
 3. Once in Arch's root, clone repository from Github into /opt directory
 
 ```bash
-git clone https://github.com/aguilarcarboni/laserfocus-os.git /opt/laserfocus-os
+git clone https://github.com/aguilarcarboni/arch-install.git /opt/arch-install
 ```
 
 4. Install necessary packages using [configure-root.sh](/configure-root.sh)

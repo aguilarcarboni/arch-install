@@ -128,7 +128,8 @@ chown -R ${username} /opt/arch-install
 # Install Essential Packages
 ###############################################################################
 
-pacman -S --needed --noconfirm kitty openssh
+# Install OpenSSH
+pacman -S --needed --noconfirm openssh
 
 # Enable the SSH deamon
 systemctl enable sshd

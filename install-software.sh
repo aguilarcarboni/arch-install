@@ -68,21 +68,15 @@ fi
 # Install Essential Applications
 ###############################################################################
 
-echo "Installing essential apps..."
-
 ###############################################################################
 # Install Optional Applications
 ###############################################################################
-
-echo "Installing optional apps..."
 
 ###############################################################################
 # Install Essential Developer Tools                                                     
 ###############################################################################
 
 if [[ -z "${developer}" || "${developer}" =~ ^[Yy]$ ]]; then
-
-    echo "Installing essential developer tools..."
     
     # Make Developer directories
     mkdir -p ~/Developer/Repositories
@@ -96,8 +90,6 @@ fi
 ###############################################################################
 
 if [[ -z "${developer}" || "${developer}" =~ ^[Yy]$ ]]; then
-
-    echo "Installing optional developer apps..."
 
 fi
 

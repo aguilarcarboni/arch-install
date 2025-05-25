@@ -10,6 +10,7 @@ set -o pipefail
 ###############################################################################
 
 echo "Installing essential software..."
+read -p "Is this a developer machine? (Y/n): " developer
 
 # Install essential packages
 pacman -S --needed --noconfirm neovim spice-vdagent btop cmatrix fastfetch gnupg

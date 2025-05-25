@@ -173,13 +173,11 @@ echo -e "Done\n"
 
 # Install useful packages
 echo -e "\nInstalling useful packages..."
-pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv docker docker-compose nodejs npm neovim openssh gnupg cmatrix
-npm install -g yarn
+pacman -S --needed --noconfirm fastfetch kitty python python-virtualenv neovim openssh gnupg cmatrix
 echo -e "Packages installed.\n"
 
 # Start daemons
 echo -e "\nEnabling relevant daemons..."
-systemctl enable docker.socket
 sudo systemctl enable sshd
 echo -e "Enabled relevant daemons.\n"
 
@@ -187,11 +185,6 @@ echo -e "Enabled relevant daemons.\n"
 #echo -e "\nInstalling KDE Plasma..."
 #pacman -S --noconfirm --needed plasma-meta
 #systemctl enable sddm.service
-
-# Add user to docker group so it can run docker without sudo
-echo -e "\nAdding user to docker group\n"
-gpasswd -a ${username} docker
-echo -e "Done\n"
 
 # Run Fastfetch
 fastfetch

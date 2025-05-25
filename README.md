@@ -27,8 +27,8 @@ curl -L -o install-arch.sh https://raw.githubusercontent.com/aguilarcarboni/arch
 git clone https://github.com/aguilarcarboni/arch-install.git /opt/arch-install
 ```
 
-4. Install necessary packages using [configure-root.sh](/configure-root.sh)
+4. Install necessary packages using [setup-root.sh](/setup-root.sh)
 5. Reboot machine and log in as user
-6. Set up basic user configurations and any type of Nebula node using [setup-user.sh](/setup-user.sh)
+6. Set up basic user configurations and any type of Nebula node using [install-software.sh](/install-software.sh)
 
 ### created by [@aguilarcarboni](https://github.com/aguilarcarboni/)

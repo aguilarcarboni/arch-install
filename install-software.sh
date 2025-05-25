@@ -98,6 +98,5 @@ if [[ -z "${developer}" || "${developer}" =~ ^[Yy]$ ]]; then
 
 fi
 
-echo "Successfully installed software."
 fastfetch
 exit 0

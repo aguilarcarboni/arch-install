@@ -134,4 +134,4 @@ sudo systemctl enable sshd
 #pacman -S --noconfirm --needed plasma-meta
 #systemctl enable sddm.service
 
-echo "Successfully set up root and other users."
+fastfetch

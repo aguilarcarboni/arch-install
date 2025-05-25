@@ -11,6 +11,9 @@ set -o pipefail
 
 echo "Installing essential software..."
 
+# Install essential packages
+pacman -S --needed --noconfirm neovim spice-vdagent btop cmatrix fastfetch gnupg
+
 # Install Python
 pacman -S --needed --noconfirm python python-virtualenv
 

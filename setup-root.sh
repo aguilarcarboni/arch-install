@@ -128,11 +128,10 @@ chown -R ${username} /opt/arch-install
 # Install Essential Packages
 ###############################################################################
 
-# Install useful packages
-pacman -S --needed --noconfirm fastfetch kitty neovim openssh gnupg cmatrix
+pacman -S --needed --noconfirm kitty openssh
 
-# Start daemons
-sudo systemctl enable sshd
+# Enable the SSH deamon
+systemctl enable sshd
 
 # Install KDE Plasma
 #pacman -S --noconfirm --needed plasma-meta
